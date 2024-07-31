@@ -2,9 +2,12 @@
 
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { useRouter } from "next/navigation";
+import { Toaster, toast } from "react-hot-toast";
 
 const Login = () => {
   const { signInWithGoogle, signInWithEmail } = useAuth();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,6 +23,7 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error during Google login:", error);
     }
@@ -27,6 +31,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <Toaster />
       <div className="max-w-md w-full bg-white shadow-md rounded-lg p-8 space-y-6">
         <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
         <form onSubmit={handleEmailLogin} className="space-y-4">
@@ -35,6 +40,7 @@ const Login = () => {
               Email
             </label>
             <input
+              disabled
               id="email"
               name="email"
               type="email"
@@ -50,6 +56,7 @@ const Login = () => {
               Password
             </label>
             <input
+              disabled
               id="password"
               name="password"
               type="password"
@@ -62,10 +69,11 @@ const Login = () => {
           </div>
           <div>
             <button
+              disabled
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Sign in with Email
+              Sign in with Email (disabled)
             </button>
           </div>
         </form>
