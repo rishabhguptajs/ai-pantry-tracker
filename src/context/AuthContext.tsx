@@ -42,8 +42,13 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
 
     const signInWithEmail = async (email: string, password: string) => {
         setLoading(true);
-        await signInWithEmailAndPassword(auth, email, password);
-        setLoading(false);
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+        } catch (error) {
+            console.error("Error signing in with email:", error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     const signOutAcc = async () => {
