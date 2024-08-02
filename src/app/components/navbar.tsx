@@ -21,12 +21,8 @@ const Navbar = () => {
           <Link href="/">AI Pantry Tracker</Link>
         </div>
         <div className="hidden md:flex space-x-4">
-          <Link href="/" className="text-gray-300 hover:text-white">
+          <Link href="/features" className="text-gray-300 hover:text-white">
             Features
-          </Link>
-
-          <Link href="/contact" className="text-gray-300 hover:text-white">
-            Contact
           </Link>
 
           {user ? (
@@ -89,12 +85,6 @@ const Navbar = () => {
             className="text-gray-300 hover:text-white px-4 py-2"
           >
             Features
-          </Link>
-          <Link
-            href="/contact"
-            className="text-gray-300 hover:text-white px-4 py-2"
-          >
-            Contact Us
           </Link>
 
           {user ? (
