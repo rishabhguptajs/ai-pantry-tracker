@@ -25,8 +25,8 @@ export default function Home() {
             Go to Pantry
           </Link>
         ) : (
-          <Link href="/signup"  className="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700">
-            Sign Up
+          <Link href="/login"  className="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700">
+            Sign In
           </Link>
         ) }
 
