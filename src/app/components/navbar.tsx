@@ -15,22 +15,22 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-pink-400/85 p-4 m-2 rounded-md">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-2xl font-bold">
-          <Link href="/">AI Pantry Tracker</Link>
+          <Link href="/" className="font-headingFont">Shelfie</Link>
         </div>
         <div className="hidden md:flex space-x-4">
-          <Link href="/features" className="text-gray-300 hover:text-white">
+          <Link href="/features" className="text-white font-semibold hover:text-gray-100">
             Features
           </Link>
 
           {user ? (
-            <Link href="/dashboard" className="text-gray-300 hover:text-white">
+            <Link href="/dashboard" className="text-white font-semibold hover:text-gray-100">
               Dashboard
             </Link>
           ) : (
-            <Link href="/login" className="text-gray-300 hover:text-white">
+            <Link href="/login" className="text-white font-semibold hover:text-gray-100">
               Login
             </Link>
           )}
@@ -41,7 +41,7 @@ const Navbar = () => {
                 signOutAcc()
                 router.push("/")
               }}
-              className="text-gray-300 hover:text-white"
+              className="text-white font-semibold hover:text-white"
             >
               Logout
             </button>
@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
-            className="text-gray-300 hover:text-white focus:outline-none"
+            className="text-white font-semibold hover:text-white focus:outline-none"
           >
             <svg
               className="w-6 h-6"
@@ -82,7 +82,7 @@ const Navbar = () => {
         <div className="md:hidden flex flex-col mt-4 space-y-2">
           <Link
             href="/features"
-            className="text-gray-300 hover:text-white px-4 py-2"
+            className="text-white font-semibold hover:text-white px-4 py-2"
           >
             Features
           </Link>
@@ -90,14 +90,14 @@ const Navbar = () => {
           {user ? (
             <Link
               href="/dashboard"
-              className="text-gray-300 hover:text-white px-4 py-2"
+              className="text-white font-semibold hover:text-white px-4 py-2"
             >
               Dashboard
             </Link>
           ) : (
             <Link
               href="/login"
-              className="text-gray-300 hover:text-white px-4 py-2"
+              className="text-white font-semibold hover:text-white px-4 py-2"
             >
               Login
             </Link>
@@ -107,7 +107,7 @@ const Navbar = () => {
             <div>
               <button
                 onClick={() => signOutAcc()}
-                className="text-gray-300 hover:text-white px-4 py-2"
+                className="text-white font-semibold hover:text-white px-4 py-2"
               >
                 Logout
               </button>
