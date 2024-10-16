@@ -15,7 +15,6 @@ import {
   deleteDoc,
 } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
-import Head from "next/head"
 import toast, { Toaster } from "react-hot-toast"
 
 interface PantryItem {
@@ -173,11 +172,12 @@ const Dashboard = () => {
 
         const result = await response.json()
 
-        const recipes = result.choices[0].message.content
+        const rawRecipes = result.choices[0].message.content
+        const formattedRecipes = formatRecipes(rawRecipes)
 
-        console.log(recipes)
+        console.log(formattedRecipes)
 
-        setRecipes(recipes)
+        setRecipes(formattedRecipes)
       }
 
       toast.promise(suggestRecipeHelper(), {
@@ -189,6 +189,13 @@ const Dashboard = () => {
       console.error("Error suggesting recipes: ", error)
       setRecipes("")
     }
+  }
+
+  const formatRecipes = (rawRecipes: string) => {
+    return rawRecipes
+      .replace(/(\d+)\. /g, "<strong>$1.</strong> ")
+      .replace(/(\*\*.*?\*\*)/g, "<strong>$1</strong>")
+      .replace(/\n/g, "<br />")
   }
 
   const handleAddItem = async () => {
@@ -375,7 +382,7 @@ const Dashboard = () => {
         {recipes && (
           <div className="mt-4 p-4 border rounded-md">
             <h3 className="text-lg font-bold">Suggested Recipes:</h3>
-            <p>{recipes}</p>
+            <p dangerouslySetInnerHTML={{ __html: recipes }}></p>
           </div>
         )}
       </div>
